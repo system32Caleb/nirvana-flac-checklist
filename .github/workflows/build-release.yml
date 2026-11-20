@@ -66,18 +66,22 @@ jobs:
           name: nirvana-flac-checklist-apk
           path: ${{ env.APK_PATH }}
 
+      - name: Create release notes
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          cat > release-notes.md <<'EOF'
+          ## Nirvana FLAC Checklist
+
+          - Versión: $GITHUB_REF_NAME
+          - Tamaño del APK: $APK_SIZE bytes
+          - Compatibilidad: Android 10 (API 29) o superior
+          - Incluye catálogo local, checklist persistente, búsqueda, filtros, progreso y exportación/importación JSON.
+          - La aplicación no descarga ni incluye música protegida por derechos de autor.
+          EOF
+
       - name: Publish GitHub Release
         if: startsWith(github.ref, 'refs/tags/v')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" \
-            "$APK_PATH" \
-            --title "Nirvana FLAC Checklist $GITHUB_REF_NAME" \
-            --notes "## Nirvana FLAC Checklist
-
-- Versión: $GITHUB_REF_NAME
-- Tamaño del APK: $APK_SIZE bytes
-- Compatibilidad: Android 10 (API 29) o superior
-- Incluye catálogo local, checklist persistente, búsqueda, filtros, progreso y exportación/importación JSON.
-- La aplicación no descarga ni incluye música protegida por derechos de autor."
+          gh release create "$GITHUB_REF_NAME" "$APK_PATH" --title "Nirvana FLAC Checklist $GITHUB_REF_NAME" --notes-file release-notes.md
