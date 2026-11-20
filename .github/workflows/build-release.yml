@@ -31,18 +31,18 @@ jobs:
       - name: Generate release signing keystore
         run: |
           KEYSTORE_PASSWORD=$(openssl rand -hex 24)
-          KEY_PASSWORD=$(openssl rand -hex 24)
           keytool -genkeypair -v \
             -keystore release.keystore \
             -alias nirvana \
             -keyalg RSA -keysize 2048 -validity 10000 \
+            -storetype PKCS12 \
             -storepass "$KEYSTORE_PASSWORD" \
-            -keypass "$KEY_PASSWORD" \
+            -keypass "$KEYSTORE_PASSWORD" \
             -dname "CN=Nirvana FLAC Checklist"
           echo "KEYSTORE=release.keystore" >> "$GITHUB_ENV"
           echo "KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
           echo "KEY_ALIAS=nirvana" >> "$GITHUB_ENV"
-          echo "KEY_PASSWORD=$KEY_PASSWORD" >> "$GITHUB_ENV"
+          echo "KEY_PASSWORD=$KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
 
       - name: Build release APK
         run: gradle :app:assembleRelease --no-daemon
