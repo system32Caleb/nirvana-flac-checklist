@@ -5,15 +5,19 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.Toast
 import java.io.BufferedReader
 
 class MainActivity : Activity() {
@@ -25,14 +29,6 @@ class MainActivity : Activity() {
     private var query = ""
     private var filter = "all"
 
-    private val exportLauncher = registerForActivityResult(
-        ActivityResultContracts.CreateDocument("application/json")
-    ) { uri -> if (uri != null) exportTo(uri) }
-
-    private val importLauncher = registerForActivityResult(
-        ActivityResultContracts.OpenDocument()
-    ) { uri -> if (uri != null) importFrom(uri) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,27 +37,28 @@ class MainActivity : Activity() {
         progress = findViewById(R.id.global_progress)
         summary = findViewById(R.id.global_summary)
 
-        val search = findViewById<android.widget.EditText>(R.id.search)
-        search.addTextChangedListener(object : android.text.TextWatcher {
+        val search = findViewById<EditText>(R.id.search)
+        search.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
             override fun onTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
-            override fun afterTextChanged(s: android.text.Editable?) {
+            override fun afterTextChanged(s: Editable?) {
                 query = s?.toString()?.trim()?.lowercase() ?: ""
                 refresh()
             }
         })
 
-        val all = findViewById<android.widget.Button>(R.id.filter_all)
-        val downloaded = findViewById<android.widget.Button>(R.id.filter_downloaded)
-        val pending = findViewById<android.widget.Button>(R.id.filter_pending)
+        val all = findViewById<Button>(R.id.filter_all)
+        val downloaded = findViewById<Button>(R.id.filter_downloaded)
+        val pending = findViewById<Button>(R.id.filter_pending)
 
         all.setOnClickListener { setFilter("all", all, downloaded, pending) }
         downloaded.setOnClickListener { setFilter("downloaded", all, downloaded, pending) }
         pending.setOnClickListener { setFilter("pending", all, downloaded, pending) }
 
         adapter = AlbumAdapter()
-        findViewById<ListView>(R.id.album_list).adapter = adapter
-        findViewById<ListView>(R.id.album_list).setOnItemClickListener { _, _, position, _ ->
+        val list = findViewById<ListView>(R.id.album_list)
+        list.adapter = adapter
+        list.setOnItemClickListener { _, _, position, _ ->
             val release = filtered()[position]
             startActivity(
                 Intent(this, AlbumActivity::class.java)
@@ -72,7 +69,7 @@ class MainActivity : Activity() {
         refresh()
     }
 
-    private fun setFilter(value: String, all: android.widget.Button, downloaded: android.widget.Button, pending: android.widget.Button) {
+    private fun setFilter(value: String, all: Button, downloaded: Button, pending: Button) {
         filter = value
         all.alpha = if (value == "all") 1f else 0.55f
         downloaded.alpha = if (value == "downloaded") 1f else 0.55f
@@ -89,7 +86,9 @@ class MainActivity : Activity() {
             val downloadedCount = Store.downloadedCount(this, release)
             val matchesFilter = when (filter) {
                 "downloaded" -> release.tracks.isNotEmpty() && downloadedCount > 0
-                "pending" -> release.tracks.any { !Store.isDownloaded(this, release.id, release.tracks.indexOf(it)) }
+                "pending" -> release.tracks.indices.any {
+                    !Store.isDownloaded(this, release.id, it)
+                }
                 else -> true
             }
 
@@ -120,11 +119,20 @@ class MainActivity : Activity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_export -> {
-                exportLauncher.launch("nirvana-flac-checklist.json")
+                val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                    addCategory(Intent.CATEGORY_OPENABLE)
+                    type = "application/json"
+                    putExtra(Intent.EXTRA_TITLE, "nirvana-flac-checklist.json")
+                }
+                startActivityForResult(intent, REQUEST_EXPORT)
                 true
             }
             R.id.action_import -> {
-                importLauncher.launch(arrayOf("application/json", "text/*", "*/*"))
+                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+                    addCategory(Intent.CATEGORY_OPENABLE)
+                    type = "*/*"
+                }
+                startActivityForResult(intent, REQUEST_IMPORT)
                 true
             }
             R.id.action_reset -> {
@@ -143,6 +151,17 @@ class MainActivity : Activity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode != RESULT_OK) return
+        val uri = data?.data ?: return
+
+        when (requestCode) {
+            REQUEST_EXPORT -> exportTo(uri)
+            REQUEST_IMPORT -> importFrom(uri)
+        }
+    }
+
     private fun exportTo(uri: Uri) {
         contentResolver.openOutputStream(uri)?.use { output ->
             output.write(Store.exportJson(this, releases).toByteArray())
@@ -150,10 +169,13 @@ class MainActivity : Activity() {
     }
 
     private fun importFrom(uri: Uri) {
-        val json = contentResolver.openInputStream(uri)?.bufferedReader()?.use(BufferedReader::readText) ?: return
+        val json = contentResolver.openInputStream(uri)
+            ?.bufferedReader()
+            ?.use(BufferedReader::readText) ?: return
+
         val imported = Store.importJson(this, json, releases)
         refresh()
-        android.widget.Toast.makeText(this, getString(R.string.imported, imported), android.widget.Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.imported, imported), Toast.LENGTH_SHORT).show()
     }
 
     private inner class AlbumAdapter : BaseAdapter() {
@@ -196,5 +218,10 @@ class MainActivity : Activity() {
             "special" -> getString(R.string.type_special)
             else -> type
         }
+    }
+
+    companion object {
+        private const val REQUEST_EXPORT = 1001
+        private const val REQUEST_IMPORT = 1002
     }
 }
