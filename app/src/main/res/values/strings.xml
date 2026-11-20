@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nirvana FLAC Checklist</string>
+    <string name="search_hint">Buscar álbum o canción</string>
+    <string name="filter_all">Todas</string>
+    <string name="filter_downloaded">Descargadas</string>
+    <string name="filter_pending">Pendientes</string>
+    <string name="global_progress">Descargadas: %1$d de %2$d canciones • %3$d%%</string>
+    <string name="album_progress">%1$d de %2$d canciones • %3$d%%</string>
+    <string name="track_progress">%1$d/%2$d</string>
+    <string name="album_subtitle">%1$s • %2$d • %3$s%4$s</string>
+    <string name="official">Oficial</string>
+    <string name="unofficial">No oficial</string>
+    <string name="pending_verification">Pendiente de verificación</string>
+    <string name="type_studio">Álbum de estudio</string>
+    <string name="type_live">Álbum en vivo</string>
+    <string name="type_ep">EP</string>
+    <string name="type_single">Sencillo</string>
+    <string name="type_compilation">Recopilación</string>
+    <string name="type_demos">Demos y rarezas</string>
+    <string name="type_special">Edición especial</string>
+    <string name="export">Exportar checklist</string>
+    <string name="import">Importar checklist</string>
+    <string name="reset">Restablecer progreso</string>
+    <string name="reset_title">Restablecer progreso</string>
+    <string name="reset_message">Se eliminarán todas las marcas de canciones descargadas.</string>
+    <string name="reset_yes">Restablecer</string>
+    <string name="cancel">Cancelar</string>
+    <string name="imported">Importadas %1$d marcas</string>
+</resources>

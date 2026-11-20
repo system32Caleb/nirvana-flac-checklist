@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.system32caleb.nirvanachecklist'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.system32caleb.nirvanachecklist'
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(System.getenv('KEYSTORE') ?: 'release.keystore')
+            storePassword System.getenv('KEYSTORE_PASSWORD') ?: 'nirvana'
+            keyAlias System.getenv('KEY_ALIAS') ?: 'nirvana'
+            keyPassword System.getenv('KEY_PASSWORD') ?: 'nirvana'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}

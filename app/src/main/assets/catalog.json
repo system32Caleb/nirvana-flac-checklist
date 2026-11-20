@@ -1,0 +1,312 @@
+{
+  "catalogVersion": 1,
+  "releases": [
+    {
+      "id": "bleach-1989",
+      "title": "Bleach",
+      "type": "studio",
+      "year": 1989,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Blew"},
+        {"title": "About a Girl"},
+        {"title": "School"},
+        {"title": "Love Buzz", "version": "versión de estudio"},
+        {"title": "Negative Creep"},
+        {"title": "Been a Son"},
+        {"title": "On a Plain", "version": "no incluida en esta edición"},
+        {"title": "Sifting"},
+        {"title": "Big Cheese"},
+        {"title": "Downer"}
+      ]
+    },
+    {
+      "id": "nevermind-1991",
+      "title": "Nevermind",
+      "type": "studio",
+      "year": 1991,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Smells Like Teen Spirit"},
+        {"title": "In Bloom"},
+        {"title": "Come as You Are"},
+        {"title": "Breed"},
+        {"title": "Lithium"},
+        {"title": "Polly"},
+        {"title": "Territorial Pissings"},
+        {"title": "Drain You"},
+        {"title": "Lounge Act"},
+        {"title": "Stay Away"},
+        {"title": "On a Plain"},
+        {"title": "Something in the Way"},
+        {"title": "Endless, Nameless", "version": "pista oculta en algunas ediciones"}
+      ]
+    },
+    {
+      "id": "incesticide-1992",
+      "title": "Incesticide",
+      "type": "compilation",
+      "year": 1992,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Dive"},
+        {"title": "Sliver"},
+        {"title": "Stain"},
+        {"title": "Been a Son"},
+        {"title": "Turnaround"},
+        {"title": "Molly's Lips"},
+        {"title": "Son of a Gun"},
+        {"title": "(New Wave) Polly"},
+        {"title": "Beeswax"},
+        {"title": "Downer"},
+        {"title": "Mexican Seafood"},
+        {"title": "Hairspray Queen"},
+        {"title": "Aero Zeppelin"},
+        {"title": "Big Long Now"},
+        {"title": "Aneurysm"}
+      ]
+    },
+    {
+      "id": "in-utero-1993",
+      "title": "In Utero",
+      "type": "studio",
+      "year": 1993,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Serve the Servants"},
+        {"title": "Scentless Apprentice"},
+        {"title": "Heart-Shaped Box"},
+        {"title": "Rape Me"},
+        {"title": "Frances Farmer Will Have Her Revenge on Seattle"},
+        {"title": "Dumb"},
+        {"title": "Very Ape"},
+        {"title": "Milk It"},
+        {"title": "Pennyroyal Tea"},
+        {"title": "Radio Friendly Unit Shifter"},
+        {"title": "tourette's"},
+        {"title": "All Apologies"}
+      ]
+    },
+    {
+      "id": "mtv-unplugged-1994",
+      "title": "MTV Unplugged in New York",
+      "type": "live",
+      "year": 1994,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "About a Girl", "version": "en vivo, MTV Unplugged"},
+        {"title": "Come as You Are", "version": "en vivo, MTV Unplugged"},
+        {"title": "Jesus Doesn't Want Me for a Sunbeam", "version": "en vivo, MTV Unplugged"},
+        {"title": "The Man Who Sold the World", "version": "en vivo, MTV Unplugged"},
+        {"title": "Pennyroyal Tea", "version": "en vivo, MTV Unplugged"},
+        {"title": "Dumb", "version": "en vivo, MTV Unplugged"},
+        {"title": "Polly", "version": "en vivo, MTV Unplugged"},
+        {"title": "On a Plain", "version": "en vivo, MTV Unplugged"},
+        {"title": "Something in the Way", "version": "en vivo, MTV Unplugged"},
+        {"title": "Plateau", "version": "en vivo, MTV Unplugged"},
+        {"title": "Oh, Me", "version": "en vivo, MTV Unplugged"},
+        {"title": "Lake of Fire", "version": "en vivo, MTV Unplugged"},
+        {"title": "All Apologies", "version": "en vivo, MTV Unplugged"},
+        {"title": "Where Did You Sleep Last Night", "version": "en vivo, MTV Unplugged"}
+      ]
+    },
+    {
+      "id": "nirvana-2002",
+      "title": "Nirvana",
+      "type": "compilation",
+      "year": 2002,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "You Know You're Right"},
+        {"title": "About a Girl"},
+        {"title": "Been a Son"},
+        {"title": "Sliver"},
+        {"title": "Smells Like Teen Spirit"},
+        {"title": "Come as You Are"},
+        {"title": "Lithium"},
+        {"title": "In Bloom"},
+        {"title": "Heart-Shaped Box"},
+        {"title": "Pennyroyal Tea"},
+        {"title": "Rape Me"},
+        {"title": "Dumb"},
+        {"title": "All Apologies"},
+        {"title": "The Man Who Sold the World"}
+      ]
+    },
+    {
+      "id": "single-love-buzz-big-cheese-1988",
+      "title": "Love Buzz / Big Cheese",
+      "type": "single",
+      "year": 1988,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Love Buzz"},
+        {"title": "Big Cheese"}
+      ]
+    },
+    {
+      "id": "single-sliver-dive-1990",
+      "title": "Sliver / Dive",
+      "type": "single",
+      "year": 1990,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Sliver"},
+        {"title": "Dive"}
+      ]
+    },
+    {
+      "id": "single-smells-like-teen-spirit-1991",
+      "title": "Smells Like Teen Spirit",
+      "type": "single",
+      "year": 1991,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Smells Like Teen Spirit"}
+      ]
+    },
+    {
+      "id": "single-come-as-you-are-1992",
+      "title": "Come as You Are",
+      "type": "single",
+      "year": 1992,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Come as You Are"}
+      ]
+    },
+    {
+      "id": "single-lithium-1992",
+      "title": "Lithium",
+      "type": "single",
+      "year": 1992,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Lithium"}
+      ]
+    },
+    {
+      "id": "single-in-bloom-1992",
+      "title": "In Bloom",
+      "type": "single",
+      "year": 1992,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "In Bloom"}
+      ]
+    },
+    {
+      "id": "single-heart-shaped-box-1993",
+      "title": "Heart-Shaped Box",
+      "type": "single",
+      "year": 1993,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "Heart-Shaped Box"}
+      ]
+    },
+    {
+      "id": "single-all-apologies-rape-me-1993",
+      "title": "All Apologies / Rape Me",
+      "type": "single",
+      "year": 1993,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "All Apologies"},
+        {"title": "Rape Me"}
+      ]
+    },
+    {
+      "id": "single-about-a-girl-unplugged-1994",
+      "title": "About a Girl (Unplugged)",
+      "type": "single",
+      "year": 1994,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "About a Girl", "version": "en vivo, MTV Unplugged"}
+      ]
+    },
+    {
+      "id": "single-you-know-youre-right-2002",
+      "title": "You Know You're Right",
+      "type": "single",
+      "year": 2002,
+      "official": true,
+      "verification": "verified",
+      "cover": "",
+      "tracks": [
+        {"title": "You Know You're Right"}
+      ]
+    },
+    {
+      "id": "from-the-muddy-banks-of-the-wishkah-1996",
+      "title": "From the Muddy Banks of the Wishkah",
+      "type": "live",
+      "year": 1996,
+      "official": true,
+      "verification": "pending_verification",
+      "cover": "",
+      "tracks": []
+    },
+    {
+      "id": "with-the-lights-out-2004",
+      "title": "With the Lights Out",
+      "type": "demos",
+      "year": 2004,
+      "official": true,
+      "verification": "pending_verification",
+      "cover": "",
+      "tracks": []
+    },
+    {
+      "id": "sliver-the-best-of-the-box-2005",
+      "title": "Sliver: The Best of the Box",
+      "type": "compilation",
+      "year": 2005,
+      "official": true,
+      "verification": "pending_verification",
+      "cover": "",
+      "tracks": []
+    },
+    {
+      "id": "live-at-reading-2009",
+      "title": "Live at Reading",
+      "type": "live",
+      "year": 2009,
+      "official": true,
+      "verification": "pending_verification",
+      "cover": "",
+      "tracks": []
+    }
+  ]
+}
