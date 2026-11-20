@@ -20,7 +20,7 @@
     <string name="type_demos">Demos y rarezas</string>
     <string name="type_special">Edición especial</string>
     <string name="export">Exportar checklist</string>
-    <string name="import">Importar checklist</string>
+    <string name="import_checklist">Importar checklist</string>
     <string name="reset">Restablecer progreso</string>
     <string name="reset_title">Restablecer progreso</string>
     <string name="reset_message">Se eliminarán todas las marcas de canciones descargadas.</string>
