@@ -68,14 +68,16 @@ jobs:
 
       - name: Publish GitHub Release
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-ghrelease@v2
-        with:
-          files: ${{ env.APK_PATH }}
-          body: |
-            ## Nirvana FLAC Checklist
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            "$APK_PATH" \
+            --title "Nirvana FLAC Checklist $GITHUB_REF_NAME" \
+            --notes "## Nirvana FLAC Checklist
 
-            - Versión: ${{ github.ref_name }}
-            - Tamaño del APK: ${{ env.APK_SIZE }} bytes
-            - Compatibilidad: Android 10 (API 29) o superior
-            - Incluye catálogo local, checklist persistente, búsqueda, filtros, progreso y exportación/importación JSON.
-            - La aplicación no descarga ni incluye música protegida por derechos de autor.
+- Versión: $GITHUB_REF_NAME
+- Tamaño del APK: $APK_SIZE bytes
+- Compatibilidad: Android 10 (API 29) o superior
+- Incluye catálogo local, checklist persistente, búsqueda, filtros, progreso y exportación/importación JSON.
+- La aplicación no descarga ni incluye música protegida por derechos de autor."
